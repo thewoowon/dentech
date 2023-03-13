@@ -19,6 +19,11 @@
     "jsx": "preserve",
     "incremental": true
   },
+  "paths": {
+    "@/*": ["./*"],
+    "@components/*": ["components/*"],
+    "@images/*": ["images/*"],
+  },
   "exclude": [
     "node_modules",
     ".next",

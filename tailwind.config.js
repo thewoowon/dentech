@@ -5,6 +5,10 @@ module.exports = {
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {
+
+      colors: {
+        'dentium': '#ACC92A',
+      },
       typography: (theme) => ({
         DEFAULT: {
           css: {

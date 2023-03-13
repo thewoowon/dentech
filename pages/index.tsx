@@ -5,6 +5,7 @@ import React from 'react';
 import Layout from '../components/Layout';
 import { getAllPosts } from '../lib/api';
 import { PostType } from '../types/post';
+import Image from 'next/image';
 
 type IndexProps = {
   posts: PostType[];
@@ -13,40 +14,29 @@ type IndexProps = {
 export const Index = ({ posts }: IndexProps): JSX.Element => {
   return (
     <Layout>
-      <h1>Home Page</h1>
-      <p>Next.js starter for your next blog or personal site. Built with:</p>
-      <ul className="list-disc pl-4 my-6">
-        <li>Next.js</li>
-        <li className="mt-2">Typescript</li>
-        <li className="mt-2">MDX</li>
-        <li className="mt-2">Tailwind CSS</li>
-      </ul>
-
-      <a
-        href="https://github.com/ChangoMan/nextjs-typescript-mdx-blog"
-        className="inline-block px-7 py-3 rounded-md text-white dark:text-white bg-blue-600 hover:bg-blue-700 hover:text-white dark:hover:text-white"
-      >
-        Get the source code!
-      </a>
-
       {posts.map((post) => (
-        <article key={post.slug} className="mt-12">
-          <p className="mb-1 text-sm text-gray-500 dark:text-gray-400">
-            {format(parseISO(post.date), 'MMMM dd, yyyy')}
-          </p>
-          <h1 className="mb-2 text-xl">
-            <Link as={`/posts/${post.slug}`} href={`/posts/[slug]`}>
-              <a className="text-gray-900 dark:text-white dark:hover:text-blue-400">
-                {post.title}
-              </a>
-            </Link>
-          </h1>
-          <p className="mb-3">{post.description}</p>
-          <p>
-            <Link as={`/posts/${post.slug}`} href={`/posts/[slug]`}>
-              <a>Read More</a>
-            </Link>
-          </p>
+        <article key={post.slug} className="mt-12 flex">
+          <div className='w-4/12 h-60 relative rounded-xl overflow-hidden'>
+            <Image src={post.image} layout='fill'/>
+          </div>
+          <div className='w-8/12 px-6'> 
+            <p className="mb-1 text-sm text-gray-500 dark:text-gray-400">
+              {format(parseISO(post.date), 'MMMM dd, yyyy')}
+            </p>
+            <h1 className="mb-2 text-5xl font-bold">
+              <Link as={`/posts/${post.slug}`} href={`/posts/[slug]`}>
+                <a className="text-gray-900 hover:text-dentium transition ease-in-out duration-200 dark:text-white dark:hover:text-blue-400">
+                  {post.title}
+                </a>
+              </Link>
+            </h1>
+            <p className="mb-3">{post.description}</p>
+            {/* <p>
+              <Link as={`/posts/${post.slug}`} href={`/posts/[slug]`}>
+                <a>더 보기</a>
+              </Link>
+            </p> */}
+          </div>
         </article>
       ))}
     </Layout>
@@ -54,7 +44,7 @@ export const Index = ({ posts }: IndexProps): JSX.Element => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = getAllPosts(['date', 'description', 'slug', 'title']);
+  const posts = getAllPosts(['date', 'description', 'slug', 'title','writer','position','image']);
 
   return {
     props: { posts },

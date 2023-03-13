@@ -1,6 +1,6 @@
 {
-  "name": "nextjs-typescript-mdx-blog",
-  "author": "@hunterhchang",
+  "name": "dentech",
+  "author": "@thewoowon",
   "license": "MIT",
   "version": "1.0.0",
   "scripts": {
@@ -26,6 +26,8 @@
     ]
   },
   "dependencies": {
+    "@tabler/icons": "^2.10.0",
+    "@tabler/icons-react": "^2.10.0",
     "@tailwindcss/typography": "^0.5.7",
     "date-fns": "^2.29.2",
     "gray-matter": "^4.0.3",
@@ -64,5 +66,9 @@
     "remark-gfm": "^3.0.1",
     "tailwindcss": "^3.1.8",
     "typescript": "^4.8.3"
-  }
+  },
+  "description": "덴티움 기술블로그",
+  "main": "index.js",
+  "repository": "https://github.com/thewoowon/dentech.git",
+  "private": false
 }
